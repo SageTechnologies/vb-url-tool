@@ -41,6 +41,17 @@ body {
     text-align: left;
 }
 
+.url-link {
+    display: block;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    margin: 5px 0;
+}
+
+.copy-button {
+    margin-right: 10px;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
@@ -60,5 +71,23 @@ body {
     .dragover {
         border-color: #bbb;
         background-color: #444;
+    }
+
+    .url-link {
+        color: #4da6ff;
+    }
+
+    .copy-button {
+        background-color: #4da6ff;
+        color: #ffffff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .copy-button:hover {
+        background-color: #3b82db;
     }
 }

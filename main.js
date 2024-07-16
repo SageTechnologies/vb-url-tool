@@ -77,12 +77,39 @@ document.addEventListener("DOMContentLoaded", function () {
                                 // Display the server URL as a hyperlink if it exists
                                 if (jsonData.general && jsonData.general.server_url) {
                                     const serverUrl = jsonData.general.server_url;
+                                    const encodedServerUrl = encodeURIComponent(serverUrl);
+                                    const uploadUrl = `https://sagetechnologiesllc.github.io/web-vb/?server=${encodedServerUrl}`;
+
                                     const link = document.createElement("a");
                                     link.href = serverUrl;
                                     link.textContent = serverUrl;
                                     link.target = "_blank";
-                                    output.innerHTML += `<div>Parsed Server URL:</div>`;
+                                    link.className = "url-link";
+
+                                    const uploadLink = document.createElement("a");
+                                    uploadLink.href = uploadUrl;
+                                    uploadLink.textContent = uploadUrl;
+                                    uploadLink.target = "_blank";
+                                    uploadLink.className = "url-link";
+
+                                    const copyButton = document.createElement("button");
+                                    copyButton.textContent = "Copy to Clipboard";
+                                    copyButton.onclick = () => {
+                                        navigator.clipboard.writeText(uploadUrl).then(() => {
+                                            alert("Upload URL copied to clipboard!");
+                                        });
+                                    };
+                                    copyButton.className = "copy-button";
+
+                                    output.innerHTML += `<br><br><div>Parsed Server URL:</div>`;
                                     output.appendChild(link);
+                                    output.innerHTML += `<br><br><div>Upload URL to Share With Team:</div>`;
+                                    const uploadContainer = document.createElement("div");
+                                    uploadContainer.style.display = "flex";
+                                    uploadContainer.style.alignItems = "center";
+                                    uploadContainer.appendChild(copyButton);
+                                    uploadContainer.appendChild(uploadLink);
+                                    output.appendChild(uploadContainer);
                                 }
                             } catch (jsonError) {
                                 console.error("JSON parsing failed:", jsonError);
