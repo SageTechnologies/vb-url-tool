@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     const encodedServerUrl = encodeURIComponent(serverUrl);
                                     const uploadUrl = `https://sagetechnologiesllc.github.io/web-vb/?server=${encodedServerUrl}`;
 
-                                    output.innerHTML += `<div style="margin-top: 20px;">Parsed Server URL:</div><pre class="code-box">${serverUrl}</pre>`;
+                                    output.innerHTML += `<br><br><div>Parsed Server URL:</div><pre class="code-box">${serverUrl}</pre>`;
                                     output.innerHTML += `<br><br><div>Upload URL to Share With Team:</div>`;
                                     
                                     const uploadContainer = document.createElement("div");
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     uploadContainer.style.alignItems = "center";
 
                                     const copyButton = document.createElement("button");
-                                    copyButton.textContent = "Copy to clipboard";
+                                    copyButton.textContent = "Copy to Clipboard";
                                     copyButton.className = "copy-button";
                                     copyButton.onclick = () => {
                                         navigator.clipboard.writeText(uploadUrl).then(() => {
